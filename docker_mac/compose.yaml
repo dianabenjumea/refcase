@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  radiation_demo:
+    image: reference_case:latest # Use a prebuilt image if available
+    container_name: reference_case
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "6080:80"  # Maps port 6080 on host to port 80 in container
+    security_opt:
+      - seccomp=unconfined  # Disables seccomp for compatibility
+    shm_size: 512m  # Shared memory size for better performance
+    volumes:
+      - ../refcase_ws:/home/ubuntu/catkin_ws        #catkin_ws Location
+      - ../refcase_mcapl:/home/ubuntu/mcapl                # mcapl Location
+      - /etc/localtime:/etc/localtime:ro  # Synchronize time with host
+      - /etc/timezone:/etc/timezone:ro    # Ensure correct timezone
+    environment:
+      - TZ=${TZ}  # Use the host's timezone
+      - AJPF_HOME=/home/ubuntu/mcapl
+      - CLASSPATH=/home/ubuntu/mcapl/bin:/home/ubuntu/mcapl/lib/3rdparty/*
+    stdin_open: true  # Keeps stdin open for interactive processes
+    tty: true  # Enables a pseudo-TTY

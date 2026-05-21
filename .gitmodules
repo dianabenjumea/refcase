@@ -1,0 +1,6 @@
+[submodule "refcase_ws"]
+	path = refcase_ws
+	url = https://github.com/everskyrube/refcase_ws.git
+[submodule "refcase_mcapl"]
+	path = refcase_mcapl
+	url = https://github.com/everskyrube/refcase_mcapl.git
