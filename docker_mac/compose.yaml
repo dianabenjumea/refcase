@@ -13,8 +13,9 @@ services:
       - seccomp=unconfined  # Disables seccomp for compatibility
     shm_size: 512m  # Shared memory size for better performance
     volumes:
-      - ../refcase_ws:/home/ubuntu/catkin_ws        #catkin_ws Location
-      - ../refcase_mcapl:/home/ubuntu/mcapl                # mcapl Location
+      - ../refcase_ws:/home/ubuntu/catkin_ws     #catkin_ws subdirectory
+      - ../refcase_mcapl:/home/ubuntu/mcapl      # mcapl subdirectory
+      - ../experiments:/home/ubuntu/experiments  # Experiments subdirectory
       - /etc/localtime:/etc/localtime:ro  # Synchronize time with host
       - /etc/timezone:/etc/timezone:ro    # Ensure correct timezone
     environment:
